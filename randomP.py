@@ -6,6 +6,10 @@
 import numpy as np
 from numpy import random
 
+#nsubjects = 10
+#nclusters = 3
+#randomP(5, 3)
+
 
 def randomP(nsubjects, nclusters):
 
@@ -26,10 +30,3 @@ def randomP(nsubjects, nclusters):
         P[i, p[i] - 1] = 1
 
     return P
-
-
-
-nsubjects = 10
-nclusters = 3
-
-randomP(5, 3)
