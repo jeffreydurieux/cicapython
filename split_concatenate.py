@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Aug 12 12:53:04 2019
+
+@author: jeffreydurieux
+email: durieux.jeffrey@gmail.com
+Function that concatenates data based on P matrix
+
+import numpy as np
+
+P = np.array([[1,0],
+              [0,1],
+              [1,0],
+              [0,1]])
+
+
+A = np.array([[1,1],
+             [1,1]])
+B = np.array([[2,2],
+             [2,2]])
+C = np.array([[3,3],
+             [3,3]])
+D = np.array([[4,4],
+             [4,4]])
+
+
+data = np.stack([A,B,C,D])
+
+split_concatenate(data, P)[1]
+
+
+"""
+
+
+
+import numpy as np
+
+def split_concatenate(array, P):
+    '''
+    This functions splits a 3d array based on a boolean partioning matrix P.
+    returns a list (K elements) of np.arrays (Voxel X Time)
+    '''
+
+    shape = np.shape(P)   
+    
+    result = []
+    
+    for cluster in range(shape[1]):
+        index = P[:,cluster] == 1
+        result.append( np.concatenate( array[index], axis = 1) )
+    
+    return result
+    
+
+
