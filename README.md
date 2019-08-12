@@ -8,10 +8,10 @@ cica data
 
 ### algorithm part
 
-random P matrix -->
+random P matrix --> randomP
 split data based on P matrix --> split_concatenate.py
 Group ICA on concatenated data
 Reallocate P matrix
 empty cluster check
 loss function check
-unsplit array
+unsplit array --> splitarray.py
