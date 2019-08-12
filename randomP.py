@@ -8,7 +8,7 @@ from numpy import random
 
 #nsubjects = 10
 #nclusters = 3
-#randomP(5, 3)
+#P = randomP(5, 2)
 
 
 def randomP(nsubjects, nclusters):
