@@ -9,11 +9,9 @@ Function that concatenates data based on P matrix
 
 import numpy as np
 
-P = np.array([[1,0],
-              [0,1],
-              [1,0],
-              [0,1]])
 
+from randomP import randomP
+P = randomP(4,2)
 
 A = np.array([[1,1],
              [1,1]])
@@ -42,15 +40,12 @@ def split_concatenate(array, P):
     returns a list (K elements) of np.arrays (Voxel X Time)
     '''
 
-    shape = np.shape(P)   
-    
+    shape = np.shape(P)
+
     result = []
-    
+
     for cluster in range(shape[1]):
         index = P[:,cluster] == 1
         result.append( np.concatenate( array[index], axis = 1) )
-    
+
     return result
-    
-
-
