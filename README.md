@@ -1,2 +1,2 @@
-# cicapython
-python code for c-ica
+# Clusterwise ICA
+
