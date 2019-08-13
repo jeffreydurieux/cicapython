@@ -4,12 +4,13 @@
 
 from sumofsquares import sumofsquares
 from sim_one_ica import singlesubica
-from split_concatenate import split_concatenate, splitarray
+from split_concatenate import split_concatenate
 from randomP import randomP
 
 import numpy as np
 from sklearn.decomposition import FastICA
 
+'''
 P = randomP(6, 2)
 P
 
@@ -33,6 +34,10 @@ np.shape(X1)
 np.shape(X2)
 
 nc = 2
+#[S,A] = groupicas(data, P, nc=2)
+
+'''
+
 
 def groupicas(data, P, nc = 2):
     clusters = np.shape(P)[1]
@@ -60,3 +65,6 @@ def groupicas(data, P, nc = 2):
             if index[j] == True:
                 A[i,j,:,:] = test[count]
                 count += 1
+
+    A = np.sum(A, axis = 0)
+    return S, A
