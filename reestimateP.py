@@ -41,9 +41,6 @@ nc = 2
 reestimateP(data,S,A,P)
 
 '''
-P
-np.shape(S)
-np.shape(A)
 
 import numpy as np
 
