@@ -14,7 +14,7 @@ unsplit array --> under split_concatenate.py
 
 Group ICA on concatenated data
 
-loss function check --> under sumofsquares.py
-Reallocate P matrix --> 
+loss function check & total loss CICA --> under sumofsquares.py
+reestimateP --> reestimateP
 
 empty cluster check

@@ -1,7 +1,7 @@
 # Author: jeffrey durieux
 # email: durieux.jeffrey@gmail.com
 #
-# What: 2 functions: sumofsquares and reallocate P
+# What: 2 functions: sumofsquares and overall loss
 #
 
 
@@ -22,3 +22,17 @@ def sumofsquares(arrays):
     '''
     result = np.sum(np.power(arrays, 2))
     return result
+
+
+def overall_loss(data, P, S, A):
+    '''
+    This function computes the overall loss function of the C-ICA model
+    '''
+    shape = np.shape(P)
+    Loss = np.zeros(shape = shape[0] )
+    for i in range(shape[0]):
+        idx = np.where(P[i] == 1)
+        idx
+        Xhat = np.dot(S[idx], A[i].T)
+        Loss[i] = np.sum( np.power( (data[i]) - Xhat, 2) )
+    return np.sum(Loss)

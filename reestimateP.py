@@ -12,7 +12,7 @@ from computeA import computeA
 import numpy as np
 from sklearn.decomposition import FastICA
 
-
+'''
 P = randomP(6, 3)
 P
 
@@ -38,23 +38,31 @@ datasplit = split_concatenate(data, P)
 nc = 2
 
 [S,A] = groupicas(datasplit, P, nc=2)
-np.shape(A)
-A
+reestimateP(data,S,A,P)
+
+'''
+P
 np.shape(S)
+np.shape(A)
 
 import numpy as np
 
-def reconstruct(data, S, A, P):
+def reestimateP(data, S, A, P):
+    '''
+    This function updates the P matrix
+    Input:  data = original datasets
+            S = ica estimated components
+            A =
 
+    '''
     shape = np.shape(P)
-    M = np.shape(S)[1]
+    #M = np.shape(S)[1]
     N = np.shape(A)
-    N
+
     Ahats = np.zeros(shape = (shape[0], shape[1], N[1], N[2]))
     #Xhats = np.zeros(shape = (shape[0], shape[1], M, N[1]))
     Lir = np.zeros(shape = shape)
-
-
+    newP = np.zeros(shape = shape, dtype=int)
 
     for i in range(shape[0]):
 
@@ -64,5 +72,11 @@ def reconstruct(data, S, A, P):
 
             Xhat = np.dot(S[j], A.T)
 
-            Loss = np.sum(np.power( (data[i] - Xhat), 2 ))
+            Loss = np.sum( np.power( (data[i] - Xhat), 2) )
             Lir[i,j] = Loss
+
+    nP = np.argmin(Lir, axis = 1)
+    for p in range(shape[0]):
+        newP[p, nP[p]] = 1
+
+    return newP
