@@ -29,6 +29,8 @@ data = split_concatenate(data, P)
 
 X1 = data[0]
 X2 = data[1]
+np.shape(X1)
+np.shape(X2)
 
 nc = 2
 
@@ -39,13 +41,22 @@ def groupicas(data, P, nc = 2):
 
 
     S = np.zeros((clusters, dim, nc))
-    A = np.zeros((N, nc, nc))
+    A = np.zeros((clusters, N, nc, nc))
 
     for i in range(clusters):
         ICA = FastICA(n_components = nc)
         ica = ICA.fit_transform(data[i])
         icam = ICA.mixing_
         S[i] = ica
-        A[i] = icam
 
-# need to split A and put in array with dim N
+
+        test = np.split(ICA.mixing_, np.sum(P[:,i]))
+
+        index = P[:,i] == 1
+        count = 0
+        for j in range(N):
+
+
+            if index[j] == True:
+                A[i,j,:,:] = test[count]
+                count += 1

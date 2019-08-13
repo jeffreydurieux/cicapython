@@ -60,10 +60,10 @@ def split_concatenate(array, P):
 
     return result
 
-def splitarray(array, originalcols):
-    '''
-    This functions splits an array into equal parts based on ncols
-    input: numpy array and number of subjects in array
-    output: list of numpy arrays
-    '''
-    return np.split(array, subjects)
+#def splitarray(array, nsubjects):
+#    '''
+#    This functions splits an array into equal parts based on ncols
+#    input: numpy array and number of subjects in array
+#    output: list of numpy arrays
+#    '''
+#    return np.split(array, nsubjects)
