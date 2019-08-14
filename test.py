@@ -9,7 +9,7 @@ from randomP import randomP
 from groupicas import groupicas
 from computeA import computeA
 from reestimateP import reestimateP
-
+from sim_cica import simcica
 import numpy as np
 from sklearn.decomposition import FastICA
 
@@ -17,35 +17,54 @@ from sklearn.decomposition import FastICA
 
 
 
-### data
-data = singlesubica()
-x1 = data['Xe']
-data = singlesubica()
-x2 = data['Xe']
-data = singlesubica()
-x3 = data['Xe']
-data = singlesubica()
-x4 = data['Xe']
-data = singlesubica()
-x5 = data['Xe']
-data = singlesubica()
-x6 = data['Xe']
+datadict = simcica()
+datadict.keys()
 
-
-data = np.stack([x1,x2,x3,x4,x5,x6])
-np.shape(data)
+data = datadict['XE']
 
 ### step 1 random P and split data
-P = randomP(6, 3)
+P = randomP(20, 2)
 P
+
 datasplit = split_concatenate(data, P)
 
 ### step 2 group ICA and overall loss
-[S,A] = groupicas(datasplit, P, nc=2)
+[S,A] = groupicas(datasplit, P, nc=4)
 overall_loss(data,P,S,A)
 
 ### step 3
+
+P = reestimateP(data,S,A,P)
 P
-reestimateP(data,S,A,P)
 
 ### step convergence criterium
+
+2591015.204506336
+1703013.6584665347
+
+1652595.6264669758
+1610834.5930968456
+1563851.6850565504
+  10667.21707994243
+  10667.21707994243
+
+
+
+np.shape(S)
+
+from correlations import correlations
+
+oriS = datadict['Sr']
+oriS1 = oriS[0]
+oriS2 = oriS[1]
+
+np.shape(oriS)
+
+np.shape(S)
+
+shat1 = S[0]
+shat2 = S[1]
+
+P
+correlations(oriS1, shat1)
+correlations(oriS2, shat2)

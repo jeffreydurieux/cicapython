@@ -46,7 +46,7 @@ def groupicas(data, P, nc = 2):
 
 
     S = np.zeros((clusters, dim, nc))
-    A = np.zeros((clusters, N, nc, nc))
+    A = np.zeros((clusters, N, 100, nc))
 
     for i in range(clusters):
         ICA = FastICA(n_components = nc)

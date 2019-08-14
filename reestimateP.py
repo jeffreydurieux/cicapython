@@ -87,8 +87,7 @@ def reestimateP(data, S, A, P):
     for p in range(shape[0]):
         newP[p, nP[p]] = 1
 
-    newP
-    newP[5,2]=0
+    
 
     # check for empty clusters
     # use while loop for check multiple empty clusters
