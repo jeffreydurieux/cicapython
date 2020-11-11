@@ -33,13 +33,7 @@ data = np.stack([A,B,C,D])
 2) ################################################
 split_concatenate(data, P)[1]
 
-# What: function for computing sum of squares over single array of multiple
-# numpy arrays.
-# note that this is just a simple wrapper function
-# example: x = np.arange(1000).reshape((10,10,10))
-#  sumofsquares(x)
 
-"""
 
 
 import numpy as np
