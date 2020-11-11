@@ -31,3 +31,4 @@ Ahat = ica.mixing_
 plt.scatter(Shat[:,0], Shat[:,1])
 correlations(icadata['S'], Shat)
 
+plt.scatter(Xe[:,0], Xe[:,1])
